@@ -48,4 +48,5 @@ Tbh I'm not sure if I really needed to create special slugs for days, but it may
 ## Misc. thoughts/ideas
 
 - Could use the slug/digest function to link `[[title]]`-style references.
+- Create a [transformer plugin](https://www.gatsbyjs.org/tutorial/part-six/) to build links and references from Roam JSON?
 - It would be interesting to try converting Roam queries to GraphQL queries.
