@@ -2,18 +2,18 @@
 
 A [GatsbyJS](https://www.gatsbyjs.org/) starter for your [Roam Research](https://roamresearch.com/) database.
 
-![A screenshot of Gatsby Roam Starter](./gatsby-roam-starter.png)
+![A screenshot of Gatsby Roam Starter](./gatsby-starter-roam.png)
 
 This project is in the early stages of development.
 - [Here are my notes](./NOTES.md).
-- [PRs welcome](https://github.com/joshuap/gatsby-roam-starter/pulls).
+- [PRs welcome](https://github.com/joshuap/gatsby-starter-roam/pulls).
 
 ## Getting Started
 
 1. Install the starter:
 
     ```sh
-    gatsby new gatsby-roam https://github.com/joshuap/gatsby-roam-starter/
+    gatsby new gatsby-roam https://github.com/joshuap/gatsby-starter-roam/
     ```
 
 2. Change directory:
@@ -36,4 +36,4 @@ This project is in the early stages of development.
 
 ## License
 
-This project is MIT licensed. See the [LICENSE](https://github.com/joshuap/gatsby-roam-starter/blob/master/LICENSE) file in this repository for details.
+This project is MIT licensed. See the [LICENSE](https://github.com/joshuap/gatsby-starter-roam/blob/master/LICENSE) file in this repository for details.
