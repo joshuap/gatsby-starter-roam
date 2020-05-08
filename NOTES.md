@@ -26,10 +26,21 @@ http://localhost:8000/___graphql
   allRoamJson {
     edges {
       node {
-        id
         title
+        fields {
+          slug
+        }
       }
     }
   }
 }
 ```
+
+## Permalinks
+
+Roam exports block refs as the `uid` property in the JSON, but it's only available for blocks--not pages. In Roam, daily notes use the `MM-DD-YYYY` date format for slugs, so I'll try to match those here. All other pages in Roam appear to use a unique slug, but it's not included in the export JSON. Since all page names in Roam are unique, I'm using a SHA-256 digest of the titles to construct a slug using the first 9 characters.
+
+https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
+https://nodejs.org/en/knowledge/cryptography/how-to-use-crypto-module/
+
+Tbh I'm not sure if I really needed to create special slugs for days, but it may still be handy in the future because I'll probably want to handle the day pages differently (like ordering them by date).
