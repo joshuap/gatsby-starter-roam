@@ -1,7 +1,7 @@
 const path = require(`path`)
 const crypto = require(`crypto`)
 
-const roamDayRegexp = /(?<month>January|February|March|April|May|June|July|August|September|October|November|December) (?<day>[0-9]{1,2})(?:th|rd|st), (?<year>[0-9]{4})/
+const roamDayRegexp = /(?<month>January|February|March|April|May|June|July|August|September|October|November|December) (?<day>[0-9]{1,2})(?:[a-z]{2})?, (?<year>[0-9]{4})/
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `RoamJson`) {
