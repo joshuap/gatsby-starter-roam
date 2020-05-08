@@ -1,4 +1,4 @@
-# Gatsby Roam Starter
+# Gatsby Starter for Roam
 
 A [GatsbyJS](https://www.gatsbyjs.org/) starter for your [Roam Research](https://roamresearch.com/) database.
 
