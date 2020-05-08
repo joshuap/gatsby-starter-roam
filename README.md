@@ -4,7 +4,7 @@ A [GatsbyJS](https://www.gatsbyjs.org/) starter for your [Roam Research](https:/
 
 ![A screenshot of Gatsby Roam Starter](./gatsby-roam-starter.png)
 
-This project is in the early stages of development:
+This project is in the early stages of development.
 - [Here are my notes](./NOTES.md).
 - [PRs welcome](https://github.com/joshuap/gatsby-roam-starter/pulls).
 
