@@ -2,7 +2,9 @@
 
 A [GatsbyJS](https://www.gatsbyjs.org/) starter for your [Roam Research](https://roamresearch.com/) database.
 
-This project is in the early stages of development. [PRs welcome](https://github.com/joshuap/gatsby-roam-starter/pulls).
+This project is in the early stages of development:
+- [Here are my notes](./NOTES.md).
+- [PRs welcome](https://github.com/joshuap/gatsby-roam-starter/pulls).
 
 ## Getting Started
 
