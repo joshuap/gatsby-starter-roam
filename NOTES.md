@@ -44,3 +44,8 @@ https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
 https://nodejs.org/en/knowledge/cryptography/how-to-use-crypto-module/
 
 Tbh I'm not sure if I really needed to create special slugs for days, but it may still be handy in the future because I'll probably want to handle the day pages differently (like ordering them by date).
+
+## Misc. thoughts/ideas
+
+- Could use the slug/digest function to link `[[title]]`-style references.
+- It would be interesting to try converting Roam queries to GraphQL queries.
