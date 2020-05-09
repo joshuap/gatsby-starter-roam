@@ -1,4 +1,5 @@
 # Gatsby Starter for Roam
+[![Twitter Follow](https://img.shields.io/twitter/follow/heyjoshwood?label=@heyjoshwood&style=social)](https://mobile.twitter.com/heyjoshwood)
 
 A [GatsbyJS](https://www.gatsbyjs.org/) starter for your [Roam Research](https://roamresearch.com/) database.
 
