@@ -1,10 +1,61 @@
+const _ = require(`lodash`)
 const path = require(`path`)
+const fs = require(`fs-extra`)
 const crypto = require(`crypto`)
+
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest },
+  pluginOptions
+) => {
+  const { createNode, createParentChildLink } = actions
+
+  if (typeof(pluginOptions.path) === 'undefined') { pluginOptions.path = `db/roam.json` }
+  if (!path.isAbsolute(pluginOptions.path)) {
+    pluginOptions.path = path.resolve(process.cwd(), pluginOptions.path)
+  }
+
+  const content = await fs.readFile(pluginOptions.path, `utf-8`)
+  const parsedContent = JSON.parse(content)
+
+  function createChildren(parent, children) {
+    if (!_.isArray(children)) { return }
+    children.forEach((obj, i) => {
+      const nodeMeta = {
+        id: createNodeId(`roam-block-${parent.id}-${i}`),
+        parent: parent.id,
+        children: [],
+        internal: {
+          type: `RoamBlock`,
+          contentDigest: createContentDigest(obj),
+        },
+      }
+      const node = Object.assign({}, obj, nodeMeta)
+      createNode(node)
+      createParentChildLink({ parent: parent, child: node })
+      createChildren(node, obj.children)
+    })
+  }
+
+  parsedContent.forEach((obj, i) => {
+    const nodeMeta = {
+      id: createNodeId(`roam-page-${i}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: `RoamPage`,
+        contentDigest: createContentDigest(obj),
+      },
+    }
+    const node = Object.assign({}, obj, nodeMeta)
+    createNode(node)
+    createChildren(node, obj.children)
+  })
+}
 
 const roamDayRegexp = /(?<month>January|February|March|April|May|June|July|August|September|October|November|December) (?<day>[0-9]{1,2})(?:[a-z]{2})?, (?<year>[0-9]{4})/
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `RoamJson`) {
+
+  if (node.internal.type === `RoamPage`) {
     let slug
     const dayMatch = node.title.match(roamDayRegexp)
     if (dayMatch) {
@@ -22,7 +73,7 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: `pages/${slug}`,
+      value: `/pages/${slug}`,
     })
   }
 }
@@ -33,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const result = await graphql(`
     query {
-      allRoamJson {
+      allRoamPage {
         edges {
           node {
             fields {
@@ -44,7 +95,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  result.data.allRoamJson.edges.forEach(({ node }) => {
+  result.data.allRoamPage.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/page.js`),

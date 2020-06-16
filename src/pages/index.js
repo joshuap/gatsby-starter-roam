@@ -12,8 +12,8 @@ export default function IndexPage({ data }) {
         <h1>
           All Pages
         </h1>
-        <h4>{data.allRoamJson.totalCount} Pages</h4>
-        {data.allRoamJson.edges.map(({ node }) => (
+        <h4>{data.allRoamPage.totalCount} Pages</h4>
+        {data.allRoamPage.edges.map(({ node }) => (
           <div key={node.id}>
             <Link to={node.fields.slug}>
               <h3>
@@ -29,7 +29,7 @@ export default function IndexPage({ data }) {
 
 export const query = graphql`
   query {
-    allRoamJson {
+    allRoamPage {
       totalCount
       edges {
         node {
